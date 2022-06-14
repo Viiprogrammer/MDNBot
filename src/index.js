@@ -1,20 +1,14 @@
 require('dotenv').config()
+
 const { escapeHTML } = require('telegram-escape')
 const { Telegraf, Markup } = require('telegraf')
 const fetch = require('node-fetch').default
 const cheerio = require('cheerio')
 const { md5 } = require('./utils')
 
-const token = process.env.BOT_TOKEN
-if (token === undefined) {
-  throw new Error('BOT_TOKEN must be provided!')
-}
-
-const bot = new Telegraf(token)
+const bot = new Telegraf(process.env.BOT_TOKEN)
 
 bot.on('inline_query', async ({ inlineQuery, answerInlineQuery }) => {
-  console.log(inlineQuery.query)
-  console.clear()
   const apiUrl = `https://developer.mozilla.org/api/v1/search?locale=en-US&q=${inlineQuery.query}`
   const response = await fetch(apiUrl)
   const { documents } = await response.json()
@@ -78,16 +72,7 @@ bot.on('inline_query', async ({ inlineQuery, answerInlineQuery }) => {
       reply_markup: Markup.inlineKeyboard(keyboard)
     }
   }
-  console.log(documents)
   return await answerInlineQuery(documents)
-})
-bot.gameQuery((ctx) => console.log(ctx))
-bot.on('chosen_inline_result', ({ chosenInlineResult }) => {
-  console.log('chosen inline result', chosenInlineResult)
-})
-
-bot.start((ctx) => {
-  return ctx.reply('Hi')
 })
 
 bot.catch(console.log)
