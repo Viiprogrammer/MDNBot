@@ -2,8 +2,8 @@ require('dotenv').config()
 const { escapeHTML } = require('telegram-escape')
 const { Telegraf, Markup } = require('telegraf')
 const fetch = require('node-fetch').default
-const crypto = require('crypto')
 const cheerio = require('cheerio')
+const { md5 } = require('./utils')
 
 const token = process.env.BOT_TOKEN
 if (token === undefined) {
@@ -11,12 +11,6 @@ if (token === undefined) {
 }
 
 const bot = new Telegraf(token)
-
-function md5 (data) {
-  return crypto.createHash('md5')
-    .update(data)
-    .digest('hex')
-}
 
 bot.on('inline_query', async ({ inlineQuery, answerInlineQuery }) => {
   console.log(inlineQuery.query)
@@ -95,6 +89,7 @@ bot.on('chosen_inline_result', ({ chosenInlineResult }) => {
 bot.start((ctx) => {
   return ctx.reply('Hi')
 })
+
 bot.catch(console.log)
 bot.telegram.deleteWebhook({ drop_pending_updates: true })
   .then(() => {
