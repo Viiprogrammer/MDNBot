@@ -1,7 +1,7 @@
 const { fetch, Agent } = require('undici')
 
 class MDN {
-  constructor ({ apiUrl = 'https://developer.mozilla.org/api', defalutLocale = 'en-US' } = {}) {
+  constructor ({ apiUrl = 'https://developer.mozilla.org', defalutLocale = 'en-US' } = {}) {
     this._apiUrl = apiUrl
     this.defaultLocale = defalutLocale
     this.agent = new Agent({
@@ -11,7 +11,7 @@ class MDN {
   }
 
   async _request (path, { url: apiUrl, qs = {}, method }) {
-    const url = new URL(path, apiUrl ?? this._apiUrl)
+    const url = new URL('/api' + path, apiUrl ?? this._apiUrl)
     url.search = new URLSearchParams(qs)
     return fetch(url, {
       dispatcher: this.agent,
@@ -20,10 +20,8 @@ class MDN {
   }
 
   async search (query, locale) {
-    const {
-      body
-    } = await this._request('/v1/search', { qs: { locale: locale ?? this.defaultLocale, q: query } })
-    return body.json()
+    const result = await this._request('/v1/search', { qs: { locale: locale ?? this.defaultLocale, q: query } })
+    return result.json()
   }
 
   getBreadcrumbsByUrl (url) {
