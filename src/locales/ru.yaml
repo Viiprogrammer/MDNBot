@@ -10,3 +10,17 @@ welcome:
   buttons:
     github: 📂 Github
     addToChat: ➕ Добавить в чат
+menu:
+  langMenu:
+    message:
+      ua: Оберіть мову
+      en: Choose language
+      ru: Выберите язык
+    langs:
+      ua: Український
+      en: English
+      ru: Русский
+    smile:
+      ua: 🇺🇦
+      en: 🇺🇸
+      ru: 🇷🇺
