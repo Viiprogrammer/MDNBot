@@ -6,6 +6,7 @@ const handlersComposer = new Composer()
 
 handlersComposer.use(session())
 handlersComposer.use(i18n.middleware())
+handlersComposer.start(start)
 handlersComposer.on('inline_query', inlineQuery)
 
 module.exports = handlersComposer
