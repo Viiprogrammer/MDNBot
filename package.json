@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/Viiprogrammer/MDNBot#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "dotenv": "^16.0.0",
     "telegraf": "^3.38.0",
+    "telegraf-i18n": "^6.6.0",
     "telegram-escape": "^1.1.0",
-    "cheerio": "^1.0.0-rc.10",
     "undici": "^5.5.1"
   },
   "devDependencies": {
