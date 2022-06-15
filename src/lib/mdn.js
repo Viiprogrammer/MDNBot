@@ -28,7 +28,8 @@ class MDN {
     let breadcrumbs = url
       .split('/')
       .slice(2)
-    breadcrumbs[0] = breadcrumbs[0].charAt(0).toUpperCase() + url[0].slice(1)
+
+    breadcrumbs[0] = breadcrumbs[0].charAt(0).toUpperCase() + breadcrumbs[0].slice(1)
     breadcrumbs = breadcrumbs.slice(0, -1).concat(breadcrumbs.slice(-1)[0].replace(/_/g, ' '))
     return breadcrumbs
   }
