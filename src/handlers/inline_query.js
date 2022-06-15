@@ -8,7 +8,7 @@ const { MDN } = require('../lib/mdn')
 const mdn = new MDN({ apiUrl: MDN_API, defalutLocale: LOCALE })
 
 module.exports = async ({ inlineQuery, answerInlineQuery }) => {
-  const { documents } = await mdn.search(inlineQuery)
+  const { documents } = await mdn.search(inlineQuery.query)
   if (!documents) return answerInlineQuery([])
 
   const pages = await mdn.getDocuments(documents)
