@@ -42,7 +42,7 @@ module.exports = async ({ inlineQuery, answerInlineQuery }) => {
     const description = summary.replace(/\n\s{2}/g, ' ')
 
     const breadcumbs = mdn.getBreadcrumbsByUrl(mdn_url)
-      .join('→')
+      .join(' → ')
 
     const dcoument = aData[mdn_url]
 
