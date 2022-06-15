@@ -1,0 +1,12 @@
+welcome:
+  message: |
+    Привет, я бот для поиска на  <a href="https://developer.mozilla.org/">Mozilla Developer Network</a>
+  
+    <i>Хочешь что-то добавить, улучшить или нашел ошибку? Cделай PR или напиши в Issue</i>
+    
+    Доступные команды:
+
+    /lang - Смена языка (🇷🇺 <code>ru</code>, 🇺🇸 <code>en</code>, 🇺🇦 <code>ua</code>)
+  buttons:
+    github: 📂 Github
+    addToChat: ➕ Добавить в чат
