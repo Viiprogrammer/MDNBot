@@ -2,7 +2,7 @@ const { escapeHTML } = require('telegram-escape')
 const { Markup } = require('telegraf')
 const cheerio = require('cheerio')
 const { md5 } = require('../utils')
-const { MDN_API, LOCALE } = require('../config')
+const { MDN_API, LOCALE, CACHE_VER, isProd } = require('../config')
 
 const { MDN } = require('../lib/mdn')
 const mdn = new MDN({ apiUrl: MDN_API, defalutLocale: LOCALE })
@@ -62,9 +62,9 @@ module.exports = async ({ inlineQuery, answerInlineQuery }) => {
 
     documents[docIndex] = {
       type: 'article',
-      id: md5(summary),
+      id: isProd ? md5(CACHE_VER + summary) : Math.random(),
       title: title,
-      cache_time: 1,
+      cache_time: isProd ? 60 : 1,
       description,
       input_message_content: {
         message_text: message,
