@@ -24,7 +24,7 @@
     "telegraf": "^3.38.0",
     "telegraf-i18n": "^6.6.0",
     "telegram-escape": "^1.1.0",
-    "undici": "^5.5.1"
+    "undici": "^5.8.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
