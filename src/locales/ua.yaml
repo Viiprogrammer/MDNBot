@@ -1,0 +1,26 @@
+welcome:
+  message: |
+    Привіт, я бот для пошуку на  <a href="https://developer.mozilla.org/">Mozilla Developer Network</a>
+  
+    <i>Хочеш щось додати, поліпшити або знайшов помилку? Зроби PR або напиши в Issue</i>
+    
+    Доступні команди:
+
+    /lang - Зміна мови (🇷🇺 <code>ru</code>, 🇺🇸 <code>en</code>, 🇺🇦 <code>ua</code>)
+  buttons:
+    github: 📂 Github
+    addToChat: ➕ Додати в чат
+menu:
+  langMenu:
+    message:
+      ua: Оберіть мову
+      en: Choose language
+      ru: Выберите язык
+    langs:
+      ua: Український
+      en: English
+      ru: Русский
+    smile:
+      ua: 🇺🇦
+      en: 🇺🇸
+      ru: 🇷🇺

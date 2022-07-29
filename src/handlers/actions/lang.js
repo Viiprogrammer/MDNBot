@@ -5,7 +5,7 @@ module.exports = async ctx => {
   const locales = i18n.availableLocales()
   if (!locales.includes(lang)) return ctx.answerCbQuery()
 
-  ctx.session.__language_code = lang
+  ctx.i18n.locale(lang);
   await ctx.answerCbQuery(
     ctx.i18n.t(`menu.langMenu.smile.${lang}`) + ' ' + ctx.i18n.t(`menu.langMenu.langs.${lang}`)
   )
