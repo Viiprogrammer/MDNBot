@@ -14,8 +14,8 @@
       "required": true
     },
     {
-      "key": "BOT_USERNAME",
-      "description": "Username of bot without @",
+      "key": "BOT_REPO",
+      "description": "Repository URL for welcome message",
       "value": "https://github.com/Viiprogrammer/MDNBot",
       "required": true
     },
