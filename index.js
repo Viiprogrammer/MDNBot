@@ -9,7 +9,7 @@ const webhookPath = `/telegraf/${crypto.randomBytes(32).toString('hex')}`
 
 app.use(bot.webhookCallback(webhookPath))
 
-bot.telegram.setWebhook(`https://${process.env.DETA_PATH}.deta.dev` + webhookPath)
+bot.telegram.setWebhook(`https://${process.env.DETA_PATH}.deta.dev` + webhookPath, { drop_pending_updates: true })
   .then(console.log)
 
 process
