@@ -1,0 +1,24 @@
+# git
+.git*
+
+# git
+.idea
+
+# dependencies
+node_modules
+
+# Deta
+.deta*
+
+# local env files
+.env
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# lock files
+
+*-lock*
+*.lock
