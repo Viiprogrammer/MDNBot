@@ -10,6 +10,4 @@ bot.catch(error => {
   console.log(error)
 })
 
-bot.launch()
-
 module.exports = { bot }
