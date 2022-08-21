@@ -1,0 +1,30 @@
+{
+  "name": "MDNBot",
+  "description": "Bot for searching in Mozilla developer network from telegram ",
+  "runtime": "nodejs14.x",
+  "env": [
+    {
+      "key": "BOT_TOKEN",
+      "description": "Token given by @BotFather",
+      "required": true
+    },
+    {
+      "key": "BOT_USERNAME",
+      "description": "Username of bot without @",
+      "required": true
+    },
+    {
+      "key": "BOT_USERNAME",
+      "description": "Username of bot without @",
+      "value": "https://github.com/Viiprogrammer/MDNBot",
+      "required": true
+    },
+    {
+      "key": "CACHE_VER",
+      "description": "Cache version",
+      "value": "1",
+      "required": true
+    }
+  ]
+}
+
