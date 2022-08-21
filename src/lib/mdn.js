@@ -1,20 +1,21 @@
-const { fetch, Agent } = require('undici')
+// const { fetch, Agent } = require('undici')
+const fetch = require('node-fetch')
 
 class MDN {
   constructor ({ apiUrl = 'https://developer.mozilla.org', defalutLocale = 'en-US' } = {}) {
     this._apiUrl = apiUrl
     this.defaultLocale = defalutLocale
-    this.agent = new Agent({
-      keepAliveTimeout: 10,
-      keepAliveMaxTimeout: 10
-    })
+    // this.agent = new Agent({
+    //   keepAliveTimeout: 10,
+    //   keepAliveMaxTimeout: 10
+    // })
   }
 
   async _request (path, { url: apiUrl, qs = {}, method }) {
     const url = new URL('/api' + path, apiUrl ?? this._apiUrl)
     url.search = new URLSearchParams(qs)
     return fetch(url, {
-      dispatcher: this.agent,
+      // dispatcher: this.agent,
       method: method || 'GET'
     })
   }
