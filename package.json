@@ -4,9 +4,12 @@
   "description": "Bot for searching in Mozilla developer network from telegram",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./",
-    "start": "node ./",
-    "lint": "eslint ./src/ && eslint ./index.js"
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js",
+    "lint": "eslint ./src/",
+    "deploy:env": "deta update -e .env",
+    "deploy:app": "deta deploy",
+    "deploy:all": "npm deploy:env && npm deploy:app"
   },
   "repository": {
     "type": "git",
