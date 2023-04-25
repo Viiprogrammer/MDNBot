@@ -1,13 +1,18 @@
 const path = require('path')
 const { Opengram, session } = require('opengram')
-const { BOT_TOKEN, isProd } = require('./config')
+const { BOT_TOKEN, isProd, DETA_PROJECT_KEY } = require('./config')
 
-const bot = new Opengram(BOT_TOKEN)
+const bot = new Opengram(BOT_TOKEN, { webhookReply: false })
 const handlers = require('./handlers')
 
 const { i18n: { i18nFactory } } = require('./handlers/middlewares')
 const i18next = require('i18next')
 const i18NextFsBackend = require('i18next-fs-backend')
+const { DetaSessionAdapter } = require('./lib/deta-store')
+
+const { Deta } = require('deta')
+const deta = Deta()
+const sessions = deta.Base('sessions')
 
 async function createBot () {
   await i18next
@@ -22,10 +27,9 @@ async function createBot () {
       }
     })
 
-  console.log(i18next.resolvedLanguage)
-
   bot.use(
     session({
+      store: DETA_PROJECT_KEY ? new DetaSessionAdapter(sessions) : undefined,
       /**
        * Session key generator
        *

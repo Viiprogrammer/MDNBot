@@ -3,7 +3,8 @@ const environment = process.env
 const {
   BOT_TOKEN,
   BOT_USERNAME,
-  NODE_ENV = 'development'
+  NODE_ENV = 'development',
+  DETA_PROJECT_KEY
 } = environment
 
 if (!BOT_TOKEN) {
@@ -24,5 +25,6 @@ module.exports = {
   isProd,
   isTest,
   botInfo,
+  DETA_PROJECT_KEY,
   ...environment
 }

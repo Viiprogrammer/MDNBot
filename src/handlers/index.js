@@ -1,4 +1,4 @@
-const { Composer, session } = require('opengram')
+const { Composer } = require('opengram')
 const inlineQuery = require('./inline_query')
 
 const { start, lang } = require('./commands')
