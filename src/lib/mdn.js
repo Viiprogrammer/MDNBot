@@ -1,21 +1,20 @@
-// const { fetch, Agent } = require('undici')
-const fetch = require('node-fetch')
+const { fetch, Agent } = require('undici')
 
 class MDN {
   constructor ({ apiUrl = 'https://developer.mozilla.org', defalutLocale = 'en-US' } = {}) {
     this._apiUrl = apiUrl
     this.defaultLocale = defalutLocale
-    // this.agent = new Agent({
-    //   keepAliveTimeout: 10,
-    //   keepAliveMaxTimeout: 10
-    // })
+    this.agent = new Agent({
+      keepAliveTimeout: 10,
+      keepAliveMaxTimeout: 10
+    })
   }
 
   async _request (path, { url: apiUrl, qs = {}, method }) {
     const url = new URL('/api' + path, apiUrl ?? this._apiUrl)
     url.search = new URLSearchParams(qs)
     return fetch(url, {
-      // dispatcher: this.agent,
+      dispatcher: this.agent,
       method: method || 'GET'
     })
   }
@@ -39,6 +38,7 @@ class MDN {
     // eslint-disable-next-line camelcase
     const promises = documents.map(({ mdn_url }) => {
       return this._request(mdn_url, { url: 'https://developer.mozilla.org' })
+        // eslint-disable-next-line camelcase
         .then((data) => ({ mdn_url, data }))
     })
     const result = await Promise.allSettled(promises)

@@ -18,13 +18,33 @@ async function createBot () {
       fallbackLng: 'ru',
       debug: !isProd,
       backend: {
-        loadPath: path.resolve('locales/{{lng}}/{{ns}}.yaml')
+        loadPath: path.resolve('./locales/{{lng}}/{{ns}}.yaml')
       }
     })
 
   console.log(i18next.resolvedLanguage)
 
-  bot.use(session())
+  bot.use(
+    session({
+      /**
+       * Session key generator
+       *
+       * @param {OpengramContext} ctx Context
+       * @return {null|string}
+       */
+      getSessionKey: (ctx) => {
+        if (ctx.from.id && ctx.chat?.id) {
+          return `${ctx.from.id}:${ctx.chat.id}`
+        }
+
+        if (ctx.inlineQuery || ctx.callbackQuery?.inline_message_id) {
+          return `${ctx.from.id}:${ctx.from.id}`
+        }
+
+        return null
+      }
+    })
+  )
   bot.use(i18nFactory(i18next))
 
   bot.use(handlers)

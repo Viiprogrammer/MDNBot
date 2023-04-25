@@ -79,3 +79,5 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+.space

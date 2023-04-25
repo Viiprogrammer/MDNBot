@@ -1,0 +1,13 @@
+v: 0
+icon: ./icon.png
+app_name: "MDNNetworkBot"
+micros:
+  - name: MDNNetworkBot
+    public: true
+    engine: nodejs16
+    primary: true
+    src: ./
+    commands:
+      - npm i
+    run: "node ./src/index.js"
+    dev: "nodemon ./src/index.js"
