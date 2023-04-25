@@ -4,7 +4,7 @@
   "description": "Bot for searching in Mozilla developer network from telegram",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
+    "dev": "export DEBUG=opengram:* && nodemon ./src/index.js",
     "start": "node ./src/index.js",
     "lint": "eslint ./src/",
     "deploy:env": "deta update -e .env",
@@ -25,9 +25,10 @@
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.1",
-    "telegraf": "^3.38.0",
-    "telegraf-i18n": "^6.6.0",
+    "i18next": "^22.4.15",
+    "i18next-fs-backend": "^2.1.1",
+    "node-fetch": "^2.6.9",
+    "opengram": "^0.2.0-beta.1",
     "telegram-escape": "^1.1.1",
     "undici": "^5.22.0"
   },

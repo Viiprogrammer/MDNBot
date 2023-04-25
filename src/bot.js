@@ -1,13 +1,39 @@
-const { Telegraf } = require('telegraf')
-const { BOT_TOKEN } = require('./config')
-const bot = new Telegraf(BOT_TOKEN)
+const path = require('path')
+const { Opengram, session } = require('opengram')
+const { BOT_TOKEN, isProd } = require('./config')
 
+const bot = new Opengram(BOT_TOKEN)
 const handlers = require('./handlers')
 
-bot.use(handlers)
+const { i18n: { i18nFactory } } = require('./handlers/middlewares')
+const i18next = require('i18next')
+const i18NextFsBackend = require('i18next-fs-backend')
 
-bot.catch(error => {
-  console.log(error)
-})
+async function createBot () {
+  await i18next
+    .use(i18NextFsBackend)
+    .init({
+      lng: 'ru',
+      languages: ['en', 'ru', 'ua'],
+      fallbackLng: 'ru',
+      debug: !isProd,
+      backend: {
+        loadPath: path.resolve('locales/{{lng}}/{{ns}}.yaml')
+      }
+    })
 
-module.exports = { bot }
+  console.log(i18next.resolvedLanguage)
+
+  bot.use(session())
+  bot.use(i18nFactory(i18next))
+
+  bot.use(handlers)
+
+  bot.catch(error => {
+    console.log(error)
+  })
+
+  return bot
+}
+
+module.exports = { createBot }

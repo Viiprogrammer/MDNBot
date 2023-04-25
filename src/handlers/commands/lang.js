@@ -1,9 +1,8 @@
-const { Markup, Extra } = require('telegraf')
-const { i18n } = require('../middlewares')
+const { Markup, Extra } = require('opengram')
 const { sliceArray } = require('../../utils')
 
 module.exports = ctx => {
-  const locales = i18n.availableLocales()
+  const locales = ctx.i18n.options.languages
   return ctx.reply(
     locales.map(name => ctx.i18n.t(`menu.langMenu.smile.${name}`) + ' ' + ctx.i18n.t(`menu.langMenu.message.${name}`))
       .join('\n'),

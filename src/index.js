@@ -1,8 +1,13 @@
 require('dotenv').config()
-const { bot } = require('./bot')
+const { createBot } = require('./bot')
 
-bot.launch()
+async function start () {
+  const bot = await createBot()
 
-process
-  .once('SIGINT', () => bot.stop())
-  .once('SIGTERM', () => bot.stop())
+  process
+    .once('SIGINT', () => bot.stop())
+    .once('SIGTERM', () => bot.stop())
+  await bot.launch()
+}
+
+start()

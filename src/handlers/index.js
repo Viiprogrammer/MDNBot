@@ -1,12 +1,9 @@
-const { Composer, session } = require('telegraf')
+const { Composer, session } = require('opengram')
 const inlineQuery = require('./inline_query')
-const { i18n } = require('./middlewares')
+
 const { start, lang } = require('./commands')
 const { lang: langAction } = require('./actions')
 const handlersComposer = new Composer()
-
-handlersComposer.use(session())
-handlersComposer.use(i18n.middleware())
 
 handlersComposer.start(start)
 handlersComposer.command('lang', lang)

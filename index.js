@@ -5,7 +5,7 @@ const { bot } = require('./src/bot')
 const crypto = require('crypto')
 const app = require('express')()
 
-const webhookPath = `/telegraf/${crypto.randomBytes(32).toString('hex')}`
+const webhookPath = `/opengram/${crypto.randomBytes(32).toString('hex')}`
 
 app.use(bot.webhookCallback(webhookPath))
 

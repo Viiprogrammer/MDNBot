@@ -1,5 +1,5 @@
 const { escapeHTML } = require('telegram-escape')
-const { Markup } = require('telegraf')
+const { Markup } = require('opengram')
 const cheerio = require('cheerio')
 const { md5 } = require('../utils')
 const { MDN_API, LOCALE, CACHE_VER, isProd } = require('../config')

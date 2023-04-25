@@ -1,4 +1,4 @@
-const { Extra, Markup } = require('telegraf')
+const { Extra, Markup } = require('opengram')
 const { BOT_USERNAME, BOT_REPO } = require('../../config')
 
 module.exports = async ctx => {
