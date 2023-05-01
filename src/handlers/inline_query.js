@@ -29,6 +29,7 @@ module.exports = async ({ inlineQuery, answerInlineQuery }) => {
       resultExample = escapeHTML(exampleTwo)
     }
 
+    // eslint-disable-next-line camelcase
     aData[mdn_url] = {
       tryIt: tryItExample,
       example: resultExample
@@ -44,6 +45,7 @@ module.exports = async ({ inlineQuery, answerInlineQuery }) => {
     const breadcumbs = mdn.getBreadcrumbsByUrl(mdn_url)
       .join(' → ')
 
+    // eslint-disable-next-line camelcase
     const dcoument = aData[mdn_url]
 
     const keyboard = [
@@ -63,7 +65,7 @@ module.exports = async ({ inlineQuery, answerInlineQuery }) => {
     documents[docIndex] = {
       type: 'article',
       id: isProd ? md5(CACHE_VER + summary) : Math.random(),
-      title: title,
+      title,
       cache_time: isProd ? 60 : 1,
       description,
       input_message_content: {

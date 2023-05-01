@@ -20,7 +20,6 @@ const i18NextFsBackend = require('i18next-fs-backend')
 const { DetaSessionAdapter } = require('./lib/deta-store')
 const { Deta } = require('deta')
 
-
 async function createBot () {
   await i18next
     .use(i18NextFsBackend)
