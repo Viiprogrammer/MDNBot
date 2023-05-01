@@ -11,3 +11,17 @@ micros:
       - npm i
     run: "node ./src/index.js"
     dev: "nodemon ./src/index.js"
+    presets:
+      env:
+        - name: BOT_TOKEN
+          description: Bot token form https://t.me/BotFather
+        - name: BOT_REPO
+          description: Bot repository for /start menu
+          default: "https://github.com/Viiprogrammer/MDNBot"
+        - name: NODE_ENV
+          description: Bot environment type, can me production or development
+          default: "production"
+        - name: CACHE_VER
+          description: Used as prefix for id's of inline query answers
+          default: "v1"
+          
