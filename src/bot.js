@@ -2,7 +2,16 @@ const path = require('path')
 const { Opengram, session } = require('opengram')
 const { BOT_TOKEN, isProd, DETA_PROJECT_KEY } = require('./config')
 
-const bot = new Opengram(BOT_TOKEN, { webhookReply: false })
+const bot = new Opengram(BOT_TOKEN, { 
+  webhookReply: false,
+  /*
+    Opengram closes connection after 2000 ms timeout,
+    it can cause problems for serverless, set this to
+    field to Infinity for waits all middlewares executed
+    successfully before close connection.
+  */
+  handlerTimeout: Infinity
+})
 const handlers = require('./handlers')
 
 const { i18n: { i18nFactory } } = require('./handlers/middlewares')
