@@ -3,14 +3,13 @@
 
 ## Screenshots
 
-![Screenshot1](https://raw.githubusercontent.com/Viiprogrammer/MDNBot/main/media/screenshot1.png)
-
-![Screenshot1](https://raw.githubusercontent.com/Viiprogrammer/MDNBot/main/media/screenshot2.png)
+![Screenshot1](https://raw.githubusercontent.com/Viiprogrammer/MDNBot/main/media/example.gif)
 
 # Features
 - Written with [Opengram](https://github.com/OpengramJS/opengram)
 - docker-compose, pm2 configs
 - Deta space ready
+- [i18next](https://www.i18next.com/) for internalization
 
 ## Deploy to deta space
 [![Deploy](https://button.deta.dev/1/svg)](https://deta.space/discovery/r/jqdcdjl9geqxnjf4)
