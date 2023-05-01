@@ -2,7 +2,7 @@ const path = require('path')
 const { Opengram, session } = require('opengram')
 const { BOT_TOKEN, isProd, DETA_PROJECT_KEY } = require('./config')
 
-const bot = new Opengram(BOT_TOKEN, { 
+const bot = new Opengram(BOT_TOKEN, {
   webhookReply: false,
   /*
     Opengram closes connection after 2000 ms timeout,
@@ -18,10 +18,8 @@ const { i18n: { i18nFactory } } = require('./handlers/middlewares')
 const i18next = require('i18next')
 const i18NextFsBackend = require('i18next-fs-backend')
 const { DetaSessionAdapter } = require('./lib/deta-store')
-
 const { Deta } = require('deta')
-const deta = Deta()
-const sessions = deta.Base('sessions')
+
 
 async function createBot () {
   await i18next
@@ -38,7 +36,7 @@ async function createBot () {
 
   bot.use(
     session({
-      store: DETA_PROJECT_KEY ? new DetaSessionAdapter(sessions) : undefined,
+      store: DETA_PROJECT_KEY ? new DetaSessionAdapter(Deta().Base('sessions')) : undefined,
       /**
        * Session key generator
        *
