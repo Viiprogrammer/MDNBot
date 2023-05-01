@@ -7,9 +7,8 @@
     "dev": "export DEBUG=opengram:* && nodemon ./src/index.js",
     "start": "node ./src/index.js",
     "lint": "eslint ./src/",
-    "deploy:env": "deta update -e .env",
-    "deploy:app": "deta deploy",
-    "deploy:all": "npm deploy:env && npm deploy:app"
+    "deploy:dev": "space dev",
+    "deploy:release": "space push && space release"
   },
   "repository": {
     "type": "git",
